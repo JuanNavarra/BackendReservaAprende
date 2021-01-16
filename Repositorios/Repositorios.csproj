@@ -1,12 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contextos\" />
     <Folder Include="Repositorio\Implementacion\" />
     <Folder Include="Repositorio\Interfaz\" />
   </ItemGroup>
@@ -22,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Datos\Datos.csproj" />
-    <ProjectReference Include="..\Dtos\Dtos.csproj" />
+    <ProjectReference Include="..\DatosDto\DatosDto.csproj" />
+    <ProjectReference Include="..\ModeloDatos\ModeloDatos.csproj" />
   </ItemGroup>
 
 </Project>
