@@ -1,17 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Repositorios;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Servicios;
 
 namespace BackendReservaAprende
 {
@@ -30,6 +24,8 @@ namespace BackendReservaAprende
             services.AddDbContext<AgendaContext>(options =>
                     options.UseSqlServer(
          Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IFooterRepository, FooterRepository>();
+            services.AddScoped<IFooterService, FooterService>();
             services.AddControllers();
             services.AddSwaggerGen();
         }
