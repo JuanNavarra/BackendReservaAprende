@@ -4,10 +4,9 @@
 /// </summary>
 namespace Servicios
 {
+    using DatosDto;
     using ModeloDatos;
-    using System;
     using System.Collections.Generic;
-    using System.Text;
 
     public interface IFooterService
     {
@@ -15,6 +14,12 @@ namespace Servicios
         /// Obtiene el footer
         /// </summary>
         /// <returns></returns>
-        public Footer ObtenerFooter();
+        public FooterDto ObtenerFooter();
+
+        /// <summary>
+        /// Obtiene los enlaces por el footer activo
+        /// </summary>
+        /// <returns></returns>
+        public List<EnlaceFooterDto> ObtenerEnlaces();
     }
 }

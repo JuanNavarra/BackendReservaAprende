@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -23,9 +24,19 @@ namespace BackendReservaAprende
         {
             services.AddDbContext<AgendaContext>(options =>
                     options.UseSqlServer(
-         Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddScoped<IFooterRepository, FooterRepository>();
             services.AddScoped<IFooterService, FooterService>();
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200");
+                    });
+            });
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
             services.AddSwaggerGen();
         }
@@ -53,6 +64,8 @@ namespace BackendReservaAprende
             });
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
