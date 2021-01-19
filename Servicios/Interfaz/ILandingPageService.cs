@@ -8,7 +8,7 @@ namespace Servicios
     using ModeloDatos;
     using System.Collections.Generic;
 
-    public interface IFooterService
+    public interface ILandingPageService
     {
         /// <summary>
         /// Obtiene el footer
@@ -21,5 +21,11 @@ namespace Servicios
         /// </summary>
         /// <returns></returns>
         public List<EnlaceFooterDto> ObtenerEnlaces();
+
+        /// <summary>
+        /// Obtiene toda la informacion de texto del cuerpo de la pagina
+        /// </summary>
+        /// <returns></returns>
+        public List<InformacionDto> ObtenerInformacion();
     }
 }

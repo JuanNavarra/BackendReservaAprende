@@ -27,7 +27,8 @@ namespace BackendReservaAprende
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IFooterRepository, FooterRepository>();
-            services.AddScoped<IFooterService, FooterService>();
+            services.AddScoped<IInformacionRepository, InformacionRepository>();
+            services.AddScoped<ILandingPageService, LandingPageService>();
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(

@@ -13,19 +13,19 @@ namespace BackendReservaAprende.Controllers
     using System.Collections.Generic;
 
     [Produces("application/json")]
-    [Route("api/")]
+    [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
-    public class FooterController : Controller
+    public class LandingPageController : Controller
     {
         #region Propiedades
-        private readonly IFooterService footerService;
+        private readonly ILandingPageService landingPageService;
         #endregion
 
         #region Constructores
-        public FooterController(IFooterService footerService)
+        public LandingPageController(ILandingPageService landingPageService)
         {
-            this.footerService = footerService;
+            this.landingPageService = landingPageService;
         }
         #endregion
 
@@ -34,14 +34,14 @@ namespace BackendReservaAprende.Controllers
         /// Obtiene el footer
         /// </summary>
         /// <returns></returns>
-        [HttpGet("Footer")]
+        [HttpGet("footer")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult ObtenerFooter()
         {
             try
             {
-                FooterDto footer = footerService.ObtenerFooter();
+                FooterDto footer = landingPageService.ObtenerFooter();
                 return Json(footer);
             }
             catch (Exception)
@@ -51,20 +51,40 @@ namespace BackendReservaAprende.Controllers
         }
 
         /// <summary>
-        /// Obtiene el footer
+        /// Obtiene los enlaces del footer
         /// </summary>
         /// <returns></returns>
-        [HttpGet("EnlaceFooter")]
+        [HttpGet("enlaceFooter")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult ObtenerEnlaces()
         {
             try
             {
-                List<EnlaceFooterDto> enlaces = footerService.ObtenerEnlaces();
+                List<EnlaceFooterDto> enlaces = landingPageService.ObtenerEnlaces();
                 return Json(enlaces);
             }
-            catch (Exception e)
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene toda la informacion de texto del cuerpo de la pagina
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("informacion")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult ObtenerInformacion()
+        {
+            try
+            {
+                List<InformacionDto> informacionDto = landingPageService.ObtenerInformacion();
+                return Json(informacionDto);
+            }
+            catch (Exception)
             {
                 throw;
             }

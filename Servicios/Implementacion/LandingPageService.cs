@@ -12,18 +12,20 @@ namespace Servicios
     using System.Collections.Generic;
     using System.Text;
 
-    public class FooterService : IFooterService
+    public class LandingPageService : ILandingPageService
     {
         #region Propiedades
         private readonly IFooterRepository footerRepository;
+        private readonly IInformacionRepository informacionRepository;
         private readonly IMapper mapper;
         #endregion
 
         #region Construnctores
-        public FooterService(IFooterRepository footerRepository, IMapper mapper)
+        public LandingPageService(IFooterRepository footerRepository, IMapper mapper, IInformacionRepository informacionRepository)
         {
             this.footerRepository = footerRepository;
             this.mapper = mapper;
+            this.informacionRepository = informacionRepository;
         }
         #endregion
 
@@ -57,6 +59,24 @@ namespace Servicios
                 List<EnlaceFooter> enlaces = footerRepository.ObtenerEnlaces();
                 List<EnlaceFooterDto> enlacesDto = mapper.Map<List<EnlaceFooterDto>>(enlaces);
                 return enlacesDto;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene toda la informacion de texto del cuerpo de la pagina
+        /// </summary>
+        /// <returns></returns>
+        public List<InformacionDto> ObtenerInformacion()
+        {
+            try
+            {
+                List<Informacion> informacion = informacionRepository.ObtenerInformacion();
+                List<InformacionDto> informacionDto = mapper.Map<List<InformacionDto>>(informacion);
+                return informacionDto;
             }
             catch (Exception)
             {
