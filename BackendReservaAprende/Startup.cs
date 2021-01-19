@@ -28,6 +28,7 @@ namespace BackendReservaAprende
 
             services.AddScoped<IFooterRepository, FooterRepository>();
             services.AddScoped<IInformacionRepository, InformacionRepository>();
+            services.AddScoped<IImagenRepository, ImagenRepository>();
             services.AddScoped<ILandingPageService, LandingPageService>();
             services.AddCors(options =>
             {

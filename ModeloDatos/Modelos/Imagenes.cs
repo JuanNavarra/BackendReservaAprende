@@ -11,5 +11,6 @@
         public int? Idlogo { get; set; }
         public int? Idcarouselhome { get; set; }
         public int? Idlenguaje { get; set; }
+        public bool Activo { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace Servicios
     using Repositorios;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
 
     public class LandingPageService : ILandingPageService
@@ -17,15 +18,18 @@ namespace Servicios
         #region Propiedades
         private readonly IFooterRepository footerRepository;
         private readonly IInformacionRepository informacionRepository;
+        private readonly IImagenRepository imagenRepository;
         private readonly IMapper mapper;
         #endregion
 
         #region Construnctores
-        public LandingPageService(IFooterRepository footerRepository, IMapper mapper, IInformacionRepository informacionRepository)
+        public LandingPageService(IFooterRepository footerRepository, IMapper mapper, IInformacionRepository informacionRepository,
+            IImagenRepository imagenRepository)
         {
             this.footerRepository = footerRepository;
             this.mapper = mapper;
             this.informacionRepository = informacionRepository;
+            this.imagenRepository = imagenRepository;
         }
         #endregion
 
@@ -77,6 +81,40 @@ namespace Servicios
                 List<Informacion> informacion = informacionRepository.ObtenerInformacion();
                 List<InformacionDto> informacionDto = mapper.Map<List<InformacionDto>>(informacion);
                 return informacionDto;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene las imagenes del carousel que van en la informacion
+        /// </summary>
+        /// <returns></returns>
+        public List<ImagenInfoDto> ObtenerImagenesInfo()
+        {
+            try
+            {
+                List<Imagenes> imagenes = imagenRepository.ObtenerImagenesInfo();
+                List<ImagenInfoDto> imagenDto = mapper.Map<List<ImagenInfoDto>>(imagenes);
+                return imagenDto;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene las imagenes del carousel
+        /// </summary>
+        /// <returns></returns>
+        public List<CarouselImgDto> ObtenerImagenesCarousel()
+        {
+            try
+            {
+                return this.imagenRepository.ObtenerImagenesCarousel();
             }
             catch (Exception)
             {

@@ -89,6 +89,45 @@ namespace BackendReservaAprende.Controllers
                 throw;
             }
         }
+
+        /// <summary>
+        /// Obtiene las imagenes del carousel que van en la informacion
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("imagenes")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult ObtenerImagenes()
+        {
+            try
+            {
+                List<ImagenInfoDto> imagenDto = landingPageService.ObtenerImagenesInfo();
+                return Json(imagenDto);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        /// <summary>
+        /// Obtiene las imagenes del carousel
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("carouselImg")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult ObtenerImagenesCarousel()
+        {
+            try
+            {
+                List<CarouselImgDto> carouselImgDto = this.landingPageService.ObtenerImagenesCarousel();
+                return Json(carouselImgDto);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         #endregion
     }
 }

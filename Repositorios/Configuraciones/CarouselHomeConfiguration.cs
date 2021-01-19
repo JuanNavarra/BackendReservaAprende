@@ -16,8 +16,7 @@
 
             entity.Property(e => e.Prioridad)
                         .IsRequired()
-                        .HasColumnName("prioridad")
-                        .IsUnicode(false);
+                        .HasColumnName("prioridad");
             entity.ToTable("CarouselHome");
         }
     }

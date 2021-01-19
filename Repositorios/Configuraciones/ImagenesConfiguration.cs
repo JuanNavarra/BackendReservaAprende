@@ -24,6 +24,8 @@
 
             entity.Property(e => e.Idlogo).HasColumnName("idlogo");
 
+            entity.Property(e => e.Activo).HasColumnName("activo");
+
             entity.Property(e => e.Rutaimagen)
                 .IsRequired()
                 .HasColumnName("rutaimagen")

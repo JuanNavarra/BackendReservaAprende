@@ -27,5 +27,15 @@ namespace Servicios
         /// </summary>
         /// <returns></returns>
         public List<InformacionDto> ObtenerInformacion();
+        /// <summary>
+        /// Obtiene las imagenes del carousel que van en la informacion
+        /// </summary>
+        /// <returns></returns>
+        public List<ImagenInfoDto> ObtenerImagenesInfo();
+        /// <summary>
+        /// Obtiene las imagenes del carousel
+        /// </summary>
+        /// <returns></returns>
+        public List<CarouselImgDto> ObtenerImagenesCarousel();
     }
 }

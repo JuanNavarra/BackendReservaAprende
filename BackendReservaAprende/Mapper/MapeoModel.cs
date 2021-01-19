@@ -24,6 +24,8 @@ namespace BackendReservaAprende
                 .ForMember(f => f.Enlance, option => option.MapFrom(o => o.Enlace));
             CreateMap<Informacion, InformacionDto>();
             CreateMap<InformacionDto, Informacion>();
+            CreateMap<Imagenes, ImagenInfoDto>();
+            CreateMap<ImagenInfoDto, Imagenes>();
         }
         #endregion
     }
