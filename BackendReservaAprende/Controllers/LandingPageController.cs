@@ -128,6 +128,48 @@ namespace BackendReservaAprende.Controllers
                 throw;
             }
         }
+
+        /// <summary>
+        /// Obtiene todos los lenguajes disponibles del header
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("lenguajes")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult ObtenerLenguajes()
+        {
+            try
+            {
+                List<LenguajeDto> lenguajes = this.landingPageService.ObtenerLenguajes();
+                return Json(lenguajes);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        /// <summary>
+        /// Actualiza la bandera del hedear del landing page
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPut("lenguaje/{id}")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult ActualizarBandera(int id)
+        {
+            try
+            {
+                ApiCallResult result = landingPageService.ActualiarBandera(id);
+                return Json(result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         #endregion
     }
 }

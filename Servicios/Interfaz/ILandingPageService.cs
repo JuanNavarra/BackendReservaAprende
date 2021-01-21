@@ -37,5 +37,16 @@ namespace Servicios
         /// </summary>
         /// <returns></returns>
         public List<CarouselImgDto> ObtenerImagenesCarousel();
+        /// <summary>
+        /// Obtiene todos los lenguajes disponibles del header
+        /// </summary>
+        /// <returns></returns>
+        public List<LenguajeDto> ObtenerLenguajes();
+        /// <summary>
+        /// Actualiza la bandera del hedear del landing page
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ApiCallResult ActualiarBandera(int id);
     }
 }

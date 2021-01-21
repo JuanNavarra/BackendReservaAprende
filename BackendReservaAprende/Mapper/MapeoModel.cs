@@ -26,6 +26,12 @@ namespace BackendReservaAprende
             CreateMap<InformacionDto, Informacion>();
             CreateMap<Imagenes, ImagenInfoDto>();
             CreateMap<ImagenInfoDto, Imagenes>();
+            CreateMap<Lenguaje, LenguajeDto>()
+                .ForMember(f => f.Id, option => option.MapFrom(o => o.Idlenguaje))
+                .ForMember(f => f.OnAction, option => option.MapFrom(o => o.Estado));
+            CreateMap<LenguajeDto, Lenguaje>()
+                .ForMember(f => f.Idlenguaje, option => option.MapFrom(o => o.Id))
+                .ForMember(f => f.Estado, option => option.MapFrom(o => o.OnAction));
         }
         #endregion
     }

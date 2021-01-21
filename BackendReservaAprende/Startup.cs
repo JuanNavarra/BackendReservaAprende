@@ -29,13 +29,16 @@ namespace BackendReservaAprende
             services.AddScoped<IFooterRepository, FooterRepository>();
             services.AddScoped<IInformacionRepository, InformacionRepository>();
             services.AddScoped<IImagenRepository, ImagenRepository>();
+            services.AddScoped<ILenguajeRepository, LenguajeRepository>();
             services.AddScoped<ILandingPageService, LandingPageService>();
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:4200");
+                        builder.WithOrigins("http://localhost:4200")
+                               .AllowAnyMethod()
+                               .AllowAnyHeader();
                     });
             });
             services.AddAutoMapper(typeof(Startup));

@@ -19,17 +19,19 @@ namespace Servicios
         private readonly IFooterRepository footerRepository;
         private readonly IInformacionRepository informacionRepository;
         private readonly IImagenRepository imagenRepository;
+        private readonly ILenguajeRepository lenguajeRepository;
         private readonly IMapper mapper;
         #endregion
 
         #region Construnctores
         public LandingPageService(IFooterRepository footerRepository, IMapper mapper, IInformacionRepository informacionRepository,
-            IImagenRepository imagenRepository)
+            IImagenRepository imagenRepository, ILenguajeRepository lenguajeRepository)
         {
             this.footerRepository = footerRepository;
             this.mapper = mapper;
             this.informacionRepository = informacionRepository;
             this.imagenRepository = imagenRepository;
+            this.lenguajeRepository = lenguajeRepository;
         }
         #endregion
 
@@ -119,6 +121,53 @@ namespace Servicios
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene todos los lenguajes disponibles del header
+        /// </summary>
+        /// <returns></returns>
+        public List<LenguajeDto> ObtenerLenguajes()
+        {
+            try
+            {
+                return this.lenguajeRepository.ObtenerLenguajes();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Actualiza la bandera del hedear del landing page
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ApiCallResult ActualiarBandera(int id)
+        {
+            try
+            {
+                List<LenguajeDto> lenguajes = lenguajeRepository.ObtenerLenguajes();
+                foreach (LenguajeDto item in lenguajes)
+                {
+                    item.OnAction = item.Id != id ? false : true;
+                    lenguajeRepository.ActualiarBandera(item.Id, item.OnAction);
+                }
+                return new ApiCallResult
+                {
+                    Message = "Actualizado con exito",
+                    Status = true
+                };
+            }
+            catch (Exception e)
+            {
+                return new ApiCallResult
+                {
+                    Message = $"Actualizado con exito {e.Message}",
+                    Status = true
+                };
             }
         }
         #endregion
