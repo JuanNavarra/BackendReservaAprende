@@ -1,6 +1,7 @@
 ﻿namespace Repositorios
 {
     using DatosDto;
+    using ModeloDatos;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -20,5 +21,11 @@
         /// <param name="estado"></param>
         /// <returns></returns>
         public void ActualiarBandera(int id, bool estado);
+        /// <summary>
+        /// Obtiene un lenguaje dado un id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Lenguaje ObtenerLenguajeId(int id);
     }
 }

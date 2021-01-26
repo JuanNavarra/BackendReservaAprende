@@ -170,6 +170,25 @@ namespace Servicios
                 };
             }
         }
+
+        /// <summary>
+        /// Obtiene un lenguaje dado un id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public LenguajeDto ObtenerLenguajeId(int id)
+        {
+            try
+            {
+                Lenguaje lenguaje = this.lenguajeRepository.ObtenerLenguajeId(id);
+                LenguajeDto lenguajeDto = this.mapper.Map<LenguajeDto>(lenguaje);
+                return lenguajeDto;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         #endregion
     }
 }

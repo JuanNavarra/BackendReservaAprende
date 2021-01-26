@@ -66,6 +66,24 @@
                 throw;
             }
         }
+
+        /// <summary>
+        /// Obtiene un lenguaje dado un id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Lenguaje ObtenerLenguajeId(int id)
+        {
+            try
+            {
+                Lenguaje lenguaje = agendaContext.Lenguaje.Where(w => w.Idlenguaje == id).FirstOrDefault();
+                return lenguaje;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         #endregion
     }
 }

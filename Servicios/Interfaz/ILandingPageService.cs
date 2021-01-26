@@ -48,5 +48,11 @@ namespace Servicios
         /// <param name="id"></param>
         /// <returns></returns>
         public ApiCallResult ActualiarBandera(int id);
+        /// <summary>
+        /// Obtiene un lenguaje dado un id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public LenguajeDto ObtenerLenguajeId(int id);
     }
 }

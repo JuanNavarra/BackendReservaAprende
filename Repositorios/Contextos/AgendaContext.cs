@@ -18,7 +18,8 @@ namespace Repositorios
         public virtual DbSet<Imagenes> Imagenes { get; set; }
         public virtual DbSet<Informacion> Informacion { get; set; }
         public virtual DbSet<Lenguaje> Lenguaje { get; set; }
-
+        public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -29,6 +30,8 @@ namespace Repositorios
             modelBuilder.ApplyConfiguration(new ImagenesConfiguration());
             modelBuilder.ApplyConfiguration(new InformacionConfiguration());
             modelBuilder.ApplyConfiguration(new LenguajeConfiguration());
+            modelBuilder.ApplyConfiguration(new UsuariosConfiguration());
+            modelBuilder.ApplyConfiguration(new RolesConfiguration());
         }
     }
 }
